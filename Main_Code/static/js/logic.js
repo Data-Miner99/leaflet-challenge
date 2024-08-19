@@ -13,5 +13,25 @@ function createFeatures(earthquakeData) {
         let geo = earthquake.geometry;
         let location = [geo.coordinates[1], geo.coordinates[0]];
         let depth = geo.coordinates[2];
+
+        let color = chooseColor(depth);
+
+        let circle = L.circle(location,{
+            fillColor: color,
+            fillOpacity: 0.9,
+            color: "Red",
+            weight: 0.5,
+            radius: (earthquake.properties.mag) * 2000
+        }).bindPopup(`<h3>${earthquake.properties.place}</h3><hr><p>Magnitude:${earthquake.properties.mag}<p><p>Depth:${depth} km<p>`).addTo(myMap);
+    };
+};
+
+function chooseColor(depth) {
+    let color = "";
+    if (depth >= 90) {
+        color = "#fc4653";
+    }
+    else if (depth >= 70) {
+        
     }
 }
