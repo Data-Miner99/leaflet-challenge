@@ -50,14 +50,14 @@ function chooseColor(depth) {
     position: "bottomright"
  });
 
-legend.onAdd = function () {
+ legend.onAdd = function () {
     let div = L.DomUtil.create('div', 'info legend'),
         depthRanges = [-10, 10, 30, 50, 70, 90];
         
         // Loop through depth intervals and generate a label with a colored square for each interval
         depthRanges.forEach((depth, index) => {
             div.innerHTML +=
-                '<i style="background:' + chooseColor(depth + 1) + '"></i> ' +
+                '<i style="background:' + chooseColor(depth + 1) + '; width: 18px; height: 18px; display: inline-block;"></i> ' +
                 depth + (depthRanges[index + 1] ? '&ndash;' + depthRanges[index + 1] + '<br>' : '+');
         });
 
